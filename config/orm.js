@@ -1,12 +1,12 @@
 // Import MySQL connection.
-var connection = require("./connection");
+const connection = require("./connection");
 
 
 // Object for all our SQL statement functions.
-var orm = {
+const orm = {
 
-  selectAll: function (table, callback) {
-    var queryString = "SELECT * FROM ??;";
+  selectAll: function (table, callback) { 
+    const queryString = "SELECT * FROM ??;";
     connection.query(queryString, [table], function (err, result) {
       if (err) throw err;
       callback(result);
@@ -14,7 +14,7 @@ var orm = {
   },
 
   insertOne: function (table, cols, vals, callback) {
-    var queryString = "INSERT INTO ?? (??) VALUES (?);";
+    const queryString = "INSERT INTO ?? (??) VALUES (?);";
     connection.query(queryString, [table, cols, vals], function (err, data) {
       if (err) throw err;
       callback(data);
@@ -22,7 +22,7 @@ var orm = {
   },
 
   updateOne: function (colVal, id, callback) {
-    var queryString = "UPDATE burgers SET eaten = '1' WHERE " + id + ";";
+    const queryString = "UPDATE burgers SET eaten = '1' WHERE " + id + ";";
     connection.query(queryString, [id], function (err, result) {
       if (err) throw err;
       callback(result);
