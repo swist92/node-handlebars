@@ -1,4 +1,4 @@
-<h1>Burgers!</h1>
+{{!-- <h1>Burgers!</h1>
 
 <h2>Burgers that have not yet been eaten!</h2>
 
@@ -18,21 +18,44 @@
       {{> burgers/burger-block eaten=true}}
     {{/if}}
   {{/each}}
+</ul> --}}
+
+<div class="jumbotron1 jumbotron-fluid">
+  <div class="container1">
+  </div>
+</div>
+
+
+<div class="jumbotron jumbotron-fluid text-center mb-0">
+  <div class="container">
+    <h1 class="display-4">Burgers</h1>
+    <p class="lead">Type in your burger:</p>
+  </div>
+</div>
+
+
+<div class="burgerText text-center mb-0">
+  <form action="/insertOne" method="post">
+    <div>
+      <textarea name="burgers_name" type="text" cols="30" rows="10"></textarea><br>
+      <button type="submit" class=" btn btn-primary">Add burger</button>
+    </div>
+  </form>
+</div>
+
+<ul>
+  {{#each burgers}}
+  {{#unless this.eaten}}
+  <div>
+    <p>{{this.burgers_name}}</p>
+    <form action="/updateOne/{{this.id}}" method="post">
+      <input type="hidden" name="eaten" value="1">
+      <button type="submit" id="secondButton" class="btn btn-warning"> Eat the Burger</button>
+    </form>
+    <br>
+  </div>
+
+  {{/unless}}
+  {{/each}}
 </ul>
 
-<h2>Add a burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="burgers_name">Burger Type:</label>
-    <input type="text" id="burgers_name" name="name">
-  </div>
-
-  <div class="form-group">
-    <label for="Eat">Eaten?</label><br>
-    <input type="radio" name="Eaten" value="1" checked> Eaten!<br>
-    <input type="radio" name="Not eaten" value="0"> Not yet eaten
-  </div>
-
-  <button type="submit">Add Burger</button>
-</form>
