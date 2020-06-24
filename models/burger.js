@@ -7,17 +7,17 @@ const burger = {
       callback(res);
     });
   },
-  // The variables cols and vals are arrays.
-  insertOne: function(cols, vals, callback) {
-    // TODO: modify below to add devoured
-    orm.insertOne("burgers", "burger_name",cols, vals, function(res) {
-      console.log("Add a Burger to be eaten: ")
+  // The variable vals is an  array.
+  insertOne: function(vals, callback) {
+    // modify below to add devoured
+    orm.insertOne("burgers", "burger_name", vals, function(res) {
+      console.log("Add a Burger to be eaten: ", vals)
       callback(res);
     });
   },
-  // TODO: Modify your updateOne
-  updateOne: function(objColVals, condition, callback) {
-    orm.updateOne("burgers", objColVals, colVal, condition, id, function(res) {
+  // Modify your updateOne
+  updateOne: function(colVal, id, callback) {
+    orm.updateOne("burgers", colVal, id, function(res) {
       callback(res);
     });
   }

@@ -18,19 +18,23 @@ router.get("/", function (req, res) {
 });
 
 router.post("/insertOne", function (req, res) {
-  TODO: burger.insertOne(req.body.burgers_name, function (vals) {
-    res.redirect("/")
+  burger.insertOne(req.body.burgers_name, function (vals) {
+    res.redirect("/");
   });
 });
 
 router.post("/updateOne/:id", function (req, res) {
   const condition = "id = " + req.params.id;
   console.log("Condition is = " + condition);
-  burger.updateOne({
-    eaten: req.body.eaten
-  }, condition, function () {
-    res.redirect("/");
-  });
+  burger.updateOne(
+    {
+      eaten: req.body.eaten,
+    },
+    condition,
+    function () {
+      res.redirect("/");
+    }
+  );
 });
 
 // Export routes for server.js to use.

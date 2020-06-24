@@ -1,46 +1,46 @@
-// // Make sure we wait to attach our handlers until the DOM is fully loaded.
-// $(function() {
-//   $(".change-eaten").on("click", function(event) {
-//     var id = $(this).data("id");
-//     var justEaten = $(this).data("justEaten");
+// Make sure we wait to attach our handlers until the DOM is fully loaded.
+$(function() {
+  $(".change-eaten").on("click", function(event) {
+    const id = $(this).data("id");
+    const justEaten = $(this).data("justEaten");
 
-//     var justEatenState = {
-//       eaten: justEaten
-//     };
+    const justAteBurger = {
+      eaten: justEaten
+    };
 
-//     // Send the PUT request.
-//     $.ajax("/api/burgers/" + id, {
-//       type: "PUT",
-//       data: justEatenState
-//     }).then(
-//       function() {
-//         console.log("changed not eaten to", justEaten);
-//         // Reload the page to get the updated list
-//         location.reload();
-//       }
-//     );
-//   });
+    // Send the PUT request.
+    $.ajax("/api/burger/" + id, {
+      type: "PUT",
+      data: justAteBurger
+    }).then(
+      function() {
+        console.log("changed not eaten to", justEaten);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
 
-//   $(".create-form").on("submit", function(event) {
-//     // Make sure to preventDefault on a submit event.
-//     event.preventDefault();
+  $(".create-form").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
 
-//     var newBurger = {
-//       name: $("#burger").val().trim(),
-//       sleepy: $("[name=burger]:checked").val().trim()
-//     };
+    let newBurger = {
+      name: $("#burger").val().trim(),
+      eaten: 0
+    };
 
-//     // Send the POST request.
-//     $.ajax("/api/burgers", {
-//       type: "POST",
-//       data: newBurger
-//     }).then(
-//       function() {
-//         console.log("created new burger");
-//         // Reload the page to get the updated list
-//         location.reload();
-//       }
-//     );
-//   });
-// });
+    // Send the POST request.
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function() {
+        console.log("created new burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+});
 

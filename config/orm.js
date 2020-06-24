@@ -21,9 +21,9 @@ const orm = {
     });
   },
 
-  updateOne: function (colVal, id, callback) {
+  updateOne: function (id, callback) {
     const queryString = "UPDATE burgers SET eaten = '1' WHERE " + id + ";";
-    connection.query(queryString, [colVal, id], function (err, result) {
+    connection.query(queryString, [id], function (err, result) {
       if (err) throw err;
       callback(result);
     });
@@ -31,6 +31,7 @@ const orm = {
 };
 
 module.exports = orm;
+
 
 // Helper function for SQL syntax.
 // Let's say we want to pass 3 values into the mySQL query.
