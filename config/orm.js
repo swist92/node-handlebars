@@ -21,7 +21,7 @@ const orm = {
     });
   },
 
-  updateOne: function (id, callback) {
+  updateOne: function (table, colVal, id, callback) {
     const queryString = "UPDATE burgers SET eaten = '1' WHERE " + id + ";";
     connection.query(queryString, [id], function (err, result) {
       if (err) throw err;
