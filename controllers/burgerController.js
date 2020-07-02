@@ -26,7 +26,7 @@ router.put("/api/burgers/:id", function (req, res) {
   burger.updateOne(req.params.id, function (result) {
     console.log(result);
     console.log("eaten!");
-    res.redirect("/");
+    res.json(result);
     //res.sendStatus(200);
   });
 });

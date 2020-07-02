@@ -16,8 +16,8 @@ const burger = {
     });
   },
   // Modify your updateOne
-  updateOne: function(colVal, id, callback) {
-    orm.updateOne("burgers", colVal, id, function(res) {
+  updateOne: function(id, callback) {
+    orm.updateOne(id, function(res) {
       callback(res);
     });
   }

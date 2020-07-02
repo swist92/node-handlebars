@@ -6,7 +6,7 @@ const connection = require("./connection");
 const orm = {
 
   selectAll: function (table, callback) { 
-    const queryString = "SELECT * FROM ??;";
+    const queryString = "SELECT * FROM ??";
     connection.query(queryString, [table], function (err, result) {
       if (err) throw err;
       callback(result);
@@ -14,15 +14,15 @@ const orm = {
   },
 
   insertOne: function (table, cols, vals, callback) {
-    const queryString = "INSERT INTO ?? (??) VALUES (?);";
+    const queryString = "INSERT INTO ?? (??) VALUES (?)";
     connection.query(queryString, [table, cols, vals], function (err, data) {
       if (err) throw err;
       callback(data);
     });
   },
 
-  updateOne: function (table, colVal, id, callback) {
-    const queryString = "UPDATE burgers SET eaten = '1' WHERE " + id + ";";
+  updateOne: function (id, callback) {
+    const queryString = "UPDATE burgers SET eaten = 1 WHERE id = ?";
     connection.query(queryString, [id], function (err, result) {
       if (err) throw err;
       callback(result);
@@ -31,7 +31,6 @@ const orm = {
 };
 
 module.exports = orm;
-
 
 // Helper function for SQL syntax.
 // Let's say we want to pass 3 values into the mySQL query.

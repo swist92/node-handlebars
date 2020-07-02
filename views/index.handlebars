@@ -19,12 +19,12 @@
 
 <ul>
   {{#each burgers}}
-  {{#unless this.eaten}}
+  {{#unless eaten}}
   <div>
-    <p>{{this.burger_name}}</p>
+    <p>{{burger_name}}</p>
     {{!-- <form> --}}
       {{!-- <input type="hidden" name="eaten" value="1"> --}}
-      <button type="submit" id="change-eaten" class="btn btn-warning" data-id={{this.id}}> Eat the Burger</button>
+      <button type="submit" id="change-eaten" class="btn btn-warning" data-id={{id}}> Eat the Burger</button>
     {{!-- </form> --}}
   </div>
 
@@ -33,3 +33,13 @@
 </ul>
 
 <h2>Burgers that have been eaten!</h2>
+<ul>
+  {{#each burgers}}
+  {{#if eaten}}
+  <div>
+    <p>{{burger_name}}</p>
+  </div>
+
+  {{/if}}
+  {{/each}}
+</ul>

@@ -9,10 +9,11 @@ $(function() {
     };
 
     // Send the PUT request.
-    $.ajax("/api/burgers/" + id, {
-      type: "PUT",
+    $.ajax({
+      method: "PUT",
+      url: "/api/burgers/" + id,
       data: justAteBurger
-    }).then(function() {
+    }).then(function(res) {
         console.log("changed not eaten to eaten");
         // Reload the page to get the updated list
         location.reload();
